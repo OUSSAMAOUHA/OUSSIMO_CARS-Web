@@ -8,6 +8,7 @@ const Voiture = require("./DB/models/voitures");
 const Tracer = require("./DB/models/tracers");
 const req = require('express/lib/request');
 const res = require('express/lib/response');
+const port = process.env.PORT || 3000
 
 
 //connect to db
@@ -250,6 +251,6 @@ app.post('/test', async(req, res) => {
 
 
 // Server Listening
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('Server is running at port 3000');
 });
