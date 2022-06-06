@@ -251,6 +251,6 @@ app.post('/test', async(req, res) => {
 
 
 // Server Listening
-app.listen(port, () => {
+app.listen(3000, () => {
     console.log('Server is running at port 3000');
 });
