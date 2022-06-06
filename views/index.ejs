@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    
+    h2{
+      font-family: 'Algerian';
+      font-size: 40px;
+      text-align: center;
+    }
+    body{
+      background-color: #66a7f1;
+    }
+    #map{
+      width:300px;
+      color: black;
+      background-color: white;
+      position: absolute;
+      left: 40%;
+      border-radius: 1px 10px;
+    }
+    table{
+      background-color:white;
+    }
+    th , td{
+      color:black;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>MAP VOITURES</h2>
+  <a href="/tracer" class="btn btn-sm " id="map">Tracer</a><br/><br/>
+  <a href="/add" class="btn btn-sm " id="map">Voiture</a><br/><br/>
+  <a href="/voitureTracer" class="btn btn-sm " id="map">Voiture=>Tracer</a><br/><br/>
+  <table class="table  table-striped text-center">
+    <thead>
+      <tr>
+        <th>MATRICULE</th>
+        <th>TYPE</th>
+        <th>MARQUE</th>
+        <th>DATEC</th>
+        <th>PHOTO</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% voiture.forEach(function(m){ %>
+            <tr>
+                <td><%= m.matricule %></td>
+                <td><%= m.type %></td>
+                <td><%= m.marque %></td>
+                <td><%= m.datec %></td>
+                <td><%= m.photo %></td>
+                
+                <td>
+                    <a href="edit/<%= m._id %>" class="btn btn-sm btn-primary">Modifier</a>
+                    <a href="delete/<%= m._id %>" class="btn btn-sm btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

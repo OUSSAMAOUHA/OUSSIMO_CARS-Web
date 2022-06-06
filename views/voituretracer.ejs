@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    
+    h2{
+      font-family: 'Algerian';
+      font-size: 40px;
+      text-align: center;
+    }
+    body{
+      background-color: #66a7f1;
+    }
+    #map{
+      width:300px;
+      color: black;
+      background-color: white;
+      position: absolute;
+      left: 40%;
+      border-radius: 1px 10px;
+    }
+    table{
+      background-color:white;
+    }
+    th , td{
+      color:black;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>AFFECTER TRACER=>Voiture</h2>
+  <a href="/affecter" class="btn btn-sm " id="map">Affecter un tracer a une voiture</a><br/><br/>
+  <table class="table  table-striped text-center">
+    <thead>
+      <tr>
+        <th>Voiture</th>
+        <th>Tracer</th>
+        <th>datedebut</th>
+
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% voiture.forEach(function(m){ %>
+            <tr>
+                <td><%= m.matricule %></td>
+                <td><%= m.numTracer %></td>
+                <% m.voitureTracer.forEach(function(n){ %>
+                <td><%= n.datedebut %></td>
+                <% }); %>
+                <td>
+                    <a href="deleteaffecter/<%= m._id %>" class="btn btn-sm btn-danger">Supprimer</a>
+                    <a href="sendMap/<%= m.numTracer %>" type="button" class="btn btn-sm btn-success mappage"  >Visiter</a>
+                  </td>
+            </tr>
+        <% }); %>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
