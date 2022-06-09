@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background: #eeeeee;
+            background-image: url("https://www.pixelstalk.net/wp-content/uploads/images2/Audi-Wallpapers-Free-Download.jpg");
+            background-color: #0a0a23;
+            font-family: Univers45, sans-serif;
+        }
+        
+        #survey-form {
+            margin: 0px auto 15px auto;
+            width: 800px;
+            padding: 50px;
+            border-radius: 5px;
+            background-color: rgba(238, 238, 238, 0.8);
+            display: block;
+            align-self: center;
+            align-content: center;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-white ftco-navbar-light" id="ftco-navbar" style="background-image: url('https://www.pixelstalk.net/wp-content/uploads/images2/Audi-Wallpapers-Free-Download.jpg')" ;>
+            <div class="container" style="background-image: url('https://besthqwallpapers.com/Uploads/15-10-2017/24112/thumb2-audi-a5-tuning-stance-blue-a5-rain.jpg')" ;;>
+                <a class="navbar-brand" href="index.html">OUSSIMO<span>CARS</span></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+                <div class="collapse navbar-collapse" id="ftco-nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item "><a href="/" class="nav-link">Home</a></li>
+                        <li class="nav-item active"><a href="/voiture" class="nav-link">Voitures</a></li>
+                        <li class="nav-item "><a href="/tracer" class="nav-link">Tracers</a></li>
+                        <li class="nav-item"><a href="/voituretracer" class="nav-link">Positions</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav><br><br><br>
+
+        <section class="ftco-section ftco-cart">
+
+            <div class="container">
+                <form action="/update/<%= m._id %>" method="post" id="survey-form">
+                    <div class="form-group">
+                        <label for="matricule">Matricule:</label>
+                        <input type="text" class="form-control" id="matricule" value="<%= m.matricule %>" name="matricule" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">type:</label>
+                        <input type="text" class="form-control" id="type" value="<%= m.type %>" name="type" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="marque">marque:</label>
+                        <input type="text" class="form-control" id="marque" value="<%= m.marque %>" name="marque" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="datec">datec:</label>
+                        <input type="date" class="form-control" id="datec" value="<%= m.datec %>" name="datec" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ville">photo:</label>
+                        <input type="file" class="form-control" id="photo" value="<%= m.photo %>" name="photo" required>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Modifier</button>
+                </form>
+            </div>
+        </section>
+
+    </body>
+
+</html>
