@@ -32,7 +32,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">OUSSIMO<span>CARS</span></a>
+            <a class="navbar-brand" href="/">OUSSIMO<span>CARS</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -48,7 +48,6 @@
             </div>
         </div>
     </nav>
-    <!-- END nav -->
 
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/voitr.jpg');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
@@ -74,7 +73,9 @@
                 <% voiture.forEach(function(m){ %>
                     <div class="col-md-4">
                         <div class="car-wrap rounded ftco-animate">
-                            <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);"></div>
+                            <div class="img rounded d-flex align-items-end" ><img src="images/<%= m.photo %>" style="height: 200px; width: 300px;   display: block;
+                                margin-left: auto;
+                                margin-right: auto;"></div>
                             <div class="text">
                                 <h2 class="mb-0">
                                     <a href="car-single.html">

@@ -37,7 +37,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-white ftco-navbar-light" id="ftco-navbar" style="background-image: url('https://www.pixelstalk.net/wp-content/uploads/images2/Audi-Wallpapers-Free-Download.jpg')" ;>
             <div class="container" style="background-image: url('https://besthqwallpapers.com/Uploads/15-10-2017/24112/thumb2-audi-a5-tuning-stance-blue-a5-rain.jpg')" ;;>
-                <a class="navbar-brand" href="index.html">OUSSIMO<span>CARS</span></a>
+                <a class="navbar-brand" href="/">OUSSIMO<span>CARS</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -57,7 +57,7 @@
         <section class="ftco-section ftco-cart">
 
             <div class="container">
-                <form action="/update/<%= m._id %>" method="post" id="survey-form">
+                <form action="/update/<%= m._id %>" method="post" id="survey-form" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="matricule">Matricule:</label>
                         <input type="text" class="form-control" id="matricule" value="<%= m.matricule %>" name="matricule" required>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group">
                         <label for="ville">photo:</label>
-                        <input type="file" class="form-control" id="photo" value="<%= m.photo %>" name="photo" required>
+                        <input type="file" class="form-control" id="image" value="<%= m.photo %>" name="image" required>
                     </div>
 
 

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <title>OUSSIMO</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
-    
+
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -21,32 +22,32 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-    
+
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    
-	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">OUSSIMO<span>CARS</span></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">OUSSIMO<span>CARS</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item "><a href="/" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="/voiture" class="nav-link">Voitures</a></li>
-	          <li class="nav-item "><a href="/tracer" class="nav-link">Tracers</a></li>
-	          <li class="nav-item active"><a href="/voituretracer" class="nav-link">Positions</a></li>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item "><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/voiture" class="nav-link">Voitures</a></li>
+                    <li class="nav-item "><a href="/tracer" class="nav-link">Tracers</a></li>
+                    <li class="nav-item active"><a href="/voituretracer" class="nav-link">Positions</a></li>
 
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
+                </ul>
+            </div>
+        </div>
+    </nav>
     
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/im7.jpg');" data-stellar-background-ratio="0.5" >
       <div class="overlay"></div>
@@ -54,7 +55,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
           <div class="col-md-9 ftco-animate pb-5">
           	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Accueil <i class="ion-ios-arrow-forward"></i></a></span> <span>Positions <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-3 bread">Voitures/Tracers</h1>
+            <h1 class="mb-3 bread">Voitures &amp; Tracers &amp; Positions</h1>
           </div>
         </div>
       </div>
@@ -118,7 +119,7 @@
 						        </td>
 								<td class="price" style=" width: 250px;">
 									<a href="deleteaffecter/<%= m._id %>" class="btn btn-sm btn-danger">Supprimer</a>
-									<a href="sendMap/<%= m.numTracer %>" type="button" class="btn btn-sm btn-success mappage"  >Visiter</a>
+									<a href="sendMap?num=<%= m.voitureTracer[0].numTracer %>&matricule=<%= m.matricule %>" type="button" class="btn btn-sm btn-success mappage"  >Visiter</a>
 						        </td>
 
 						      </tr><!-- END TR-->

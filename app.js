@@ -11,7 +11,8 @@ const res = require('express/lib/response');
 const port = process.env.PORT || 3000;
 app.use(express.static(__dirname + '/public'));
 
-
+const fileUpload = require("express-fileupload");
+app.use(fileUpload());
 
 //connect to db
 connectToDb()
@@ -59,9 +60,36 @@ app.get('/add', async(req, res) => {
 })
 
 app.post('/save', async(req, res) => {
-    const voiture = await new Voiture(req.body)
-    voiture.save()
-    res.redirect('/voiture');
+    console.log("hihi")
+    console.log(req.body)
+        // Uploaded path
+    const uploadedFile = req.files.image;
+
+    // Logging uploading file
+    console.log(uploadedFile);
+    let p = Date.now() + uploadedFile.name
+        // Upload path
+    const uploadPath = __dirname.split("Routers")[0] + "/public/images/" + p;
+    // To save the file using mv() function
+    var obj = {
+        type: req.body.type,
+        matricule: req.body.matricule,
+        marque: req.body.marque,
+        datec: req.body.datec,
+        photo: p
+    }
+    uploadedFile.mv(uploadPath, async(err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            const voiture = await new Voiture(obj)
+            voiture.save().then(async() => {
+                res.redirect('/voiture')
+            }).catch((err) => {
+                res.send(err)
+            })
+        };
+    });
 })
 
 app.get('/edit/:id', async(req, res) => {
@@ -73,9 +101,36 @@ app.get('/edit/:id', async(req, res) => {
 })
 
 app.post('/update/:id', async(req, res) => {
-    let data = await Voiture.findByIdAndUpdate(req.params.id, req.body)
-    data.save()
-    res.redirect('/voiture')
+    console.log(req.body)
+    const uploadedFile = req.files.image;
+    let p = Date.now() + uploadedFile.name
+    var items = {
+            type: req.body.type,
+            matricule: req.body.matricule,
+            marque: req.body.marque,
+            datec: req.body.datec,
+            photo: p
+        }
+        // Logging uploading file
+    console.log(uploadedFile);
+
+    // Upload path
+    const uploadPath = __dirname.split("Routers")[0] + "/public/images/" + p;
+    uploadedFile.mv(uploadPath, async(err) => {
+
+        let data = await Voiture.findByIdAndUpdate(req.params.id, items)
+        data.save()
+        res.redirect('/voiture')
+
+    });
+
+
+
+
+
+
+
+
 })
 
 app.get('/delete/:id', async(req, res) => {
@@ -146,22 +201,31 @@ app.get('/deleteaffecter/:id', async(req, res) => {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-app.get('/sendMap/:numTracer', async(req, res) => {
-    let tracer = await Tracer.findOne({ num: req.params.numTracer })
-    console.log(tracer)
-    var date = [];
-    for (let i = 0; i < tracer.position.length; i++) {
-        let yourDate = tracer.position[i].date;
-        date.push(yourDate.toISOString().split('T')[0])
-
-
+app.get('/sendMap', async(req, res) => {
+    let tracer = await Tracer.find({ num: req.query.num });
+    console.log(tracer[0].position[0].latitude);
+    console.log(tracer);
+    let d = new Date();
+    let voiture = await Voiture.find({ matricule: req.query.matricule });
+    let datefin
+    if (voiture[0].voitureTracer[0].datefin === null) {
+        datefin = d;
+    } else {
+        datefin = voiture[0].voitureTracer[0].datefin;
     }
-    console.log(date)
+    var date = [];
+    for (let i = 0; i < tracer[0].position.length; i++) {
+        if (tracer[0].position[i].date > voiture[0].voitureTracer[0].datedebut && tracer[0].position[i].date < datefin) {
+            let yourDate = tracer[0].position[i].date;
+            date.push(yourDate.toISOString().split('T')[0])
+        } else {
+            continue;
+        }
+    }
     const result = Array.from(new Set(date));
     console.log(result)
     res.render('map2', {
-        num: tracer.num,
+        num: tracer[0].num,
         date: result
     })
 })
